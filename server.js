@@ -4,7 +4,10 @@
 
 /////////////////////////////
 //  SETUP and CONFIGURATION
+var db = require('./models')
 /////////////////////////////
+
+
 
 //require express in our app
 var express = require('express'),
@@ -25,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //  DATA
 ///////////////////
 
-var books = [
+/*var books = [
   {
     _id: 15,
     title: "The Four Hour Workweek",
@@ -47,7 +50,8 @@ var books = [
     image: "https://s3-us-west-2.amazonaws.com/sandboxapi/romeo_and_juliet.jpg",
     release_date: "Unknown 1597"
   }
-];
+];*/
+
 
 
 
@@ -59,6 +63,13 @@ var books = [
 //  ROUTES
 ///////////////////
 
+app.get('/api/books', function (req, res) {
+  // send all books as JSON response
+  db.Book.find(function(err, books){
+    if (err) { return console.log("index error: " + err); }
+    res.json(books);
+  });
+});
 
 
 
