@@ -1,8 +1,8 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
   Author = require('./author');
-  
-  var CharacterSchema = new Schema({
+
+var CharacterSchema = new Schema({
     name: String
   });
 
